@@ -1,3 +1,5 @@
+import lens, { view } from "./lens";
+
 type Address = {
   city: string;
   zip: string;
