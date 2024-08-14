@@ -33,6 +33,18 @@ describe("lens", () => {
   it("set should update the value using the lens", () => {
     const updatedUser = set(nameLens, "Gerald", user);
     expect(updatedUser).not.toBe(user);
-    expect(view(nameLens, updatedUser)).toBe("Gerald");
+    expect(updatedUser).toEqual({
+      name: "Gerald",
+      address: { city: "Wonderland", zip: "12345" },
+    });
+  });
+  it("over should modify the value using the lens", () => {
+    const toUpperCase = (text: string) => text.toUpperCase();
+    const upperCasedUser = over(nameLens, toUpperCase, user);
+    expect(upperCasedUser).not.toBe(user);
+    expect(upperCasedUser).toEqual({
+      name: "ALICE",
+      address: { city: "Wonderland", zip: "12345" },
+    });
   });
 });
