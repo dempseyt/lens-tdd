@@ -1,4 +1,4 @@
-import lens, { view } from "./lens";
+import lens, { set, view } from "./lens";
 
 type Address = {
   city: string;

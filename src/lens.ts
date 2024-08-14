@@ -8,6 +8,9 @@ interface Lens<S, A> {
 
 export const view = <S, A>(lens: Lens<S, A>, state: S): A => lens.get(state);
 
+export const set = <S, A>(lens: Lens<S, A>, valueToSet: A, state: S): S =>
+  lens.set(valueToSet, state);
+
 const lens = <S, A>(
   getter: Getter<S, A>,
   setter: Setter<S, A>
